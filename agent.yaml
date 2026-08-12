@@ -10,6 +10,11 @@ identity:
   keyvault_url: "https://kv-agenticdemo-poc.vault.azure.net/"
 
 tools: []
+  - id: testapi
+    roles:
+      - testapi.write
+      - testapi.read
+    apim_base_url: https://apim-agenticdemo-poc.azure-api.net/tools/testapi
 
 evaluation:
   suite: default-strict
