@@ -1,32 +1,32 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: "{{AGENT_ID}}"
-  namespace: "agents-{{TEAM_NAME}}"
+  name: "smoketest2"
+  namespace: "agents-platform-eng"
   labels:
-    app: "{{AGENT_ID}}"
-    team: "{{TEAM_NAME}}"
+    app: "smoketest2"
+    team: "platform-eng"
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: "{{AGENT_ID}}"
+      app: "smoketest2"
   template:
     metadata:
       labels:
-        app: "{{AGENT_ID}}"
-        team: "{{TEAM_NAME}}"
+        app: "smoketest2"
+        team: "platform-eng"
         azure.workload.identity/use: "true"
     spec:
-      serviceAccountName: "sa-{{AGENT_ID}}"
+      serviceAccountName: "sa-smoketest2"
       containers:
-        - name: "{{AGENT_ID}}"
-          image: "{{ACR_LOGIN_SERVER}}/agents/{{AGENT_ID}}:latest"
+        - name: "smoketest2"
+          image: "acragenticdemopoc.azurecr.io/agents/smoketest2:latest"
           ports:
             - containerPort: 8000
           envFrom:
             - configMapRef:
-                name: "config-{{AGENT_ID}}"
+                name: "config-smoketest2"
           resources:
             requests:
               cpu: 250m
