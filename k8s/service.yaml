@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: "{{AGENT_ID}}"
-  namespace: "agents-{{TEAM_NAME}}"
+  name: "smoketest2"
+  namespace: "agents-platform-eng"
 spec:
   selector:
-    app: "{{AGENT_ID}}"
+    app: "smoketest2"
   ports:
     - port: 80
       targetPort: 8000
